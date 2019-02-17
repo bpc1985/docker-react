@@ -8,6 +8,8 @@
     "react-scripts": "2.1.5"
   },
   "scripts": {
+    "dev-build": "docker build -f Dockerfile.dev .",
+    "dev-start": "docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
