@@ -1,0 +1,6 @@
+version: '2'
+
+syncs:
+  web-sync:
+    notify_terminal: true
+    src: '.'

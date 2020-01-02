@@ -17,7 +17,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Mot Hai Ba Bon Nam Sau !!!
+            One Two Three Four
           </a>
         </header>
       </div>

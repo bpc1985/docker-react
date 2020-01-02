@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   web:
     build:
@@ -7,8 +7,12 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /app/node_modules
-      - .:/app
+      #  Put a bookmark on node_modules folder, so referenced code in container not use it outside
+      - /app/node_modules # node_modules trong containter ko co reference ra ngoai
+      # Map the current folder into the /app folder in container, sign : to map code /app inside container to reference outside,
+      # add :cached to help docker run faster
+      - web-sync:/app:cached # web-sync is an alias to use with docker-sync https://viblo.asia/p/tang-toc-do-voi-docker-sync-macos-07LKXmzJZV4
+      # https://docker-sync.readthedocs.io/en/latest/getting-started/configuration.html#docker-compose-yml
   tests:
     build:
       context: .
@@ -17,3 +21,7 @@ services:
       - /app/node_modules
       - .:/app
     command: ["npm", "run", "test"]
+
+volumes:
+  web-sync:
+    external: true
